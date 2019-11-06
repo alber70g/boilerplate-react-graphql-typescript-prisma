@@ -1,0 +1,15 @@
+{
+  schema: {
+    files: "src/schema/**/*.graphql"
+  },
+  files: [
+    {
+      match: ["src/**/*.ts", "src/**/*.tsx"], // match multiple extensions
+      parser: ["EmbeddedQueryParser", { startTag: "gql`", endTag: "`" }] // parse any query inside gql template literal
+    },
+    {
+      match: "**/*.gql",
+      parser: "QueryParser"
+    }
+  ]
+}

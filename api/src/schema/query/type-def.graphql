@@ -1,0 +1,25 @@
+type Query {
+    login(input: LoginInput!): LoginPayload
+    node(id: ID!): Node
+}
+
+interface Node {
+    id: ID!
+}
+
+type User implements Node {
+    id: ID!
+    name: String!
+    email: String!
+}
+
+input LoginInput {
+    username: String!
+    password: String!
+}
+
+type LoginPayload {
+    success: Boolean!
+    user: User
+    token: String
+}

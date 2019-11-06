@@ -1,0 +1,9 @@
+# Folders
+node_modules
+build
+
+# Files
+.env
+
+# Tijdelijk ignore
+package-lock.json
