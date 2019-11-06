@@ -1,6 +1,47 @@
 type User {
   id: ID! @id
   email: String!
-  name: String!
   password: String!
+  name: String!
+  items: [Item!]! @relation(name: "OwnerRelation")
+  itemsWatched: [Item!]! @relation(link: TABLE, name: "WatchedRelation")
+}
+
+type Item { # @relationTable {
+  id: ID! @id
+  title: String!
+  description: String!
+  owner: User! @relation(link: INLINE, name: "OwnerRelation")
+  viewers: [User!]! @relation(name: "WatchedRelation")
+  product: Product
+  image: [Image!]!
+}
+
+type Ad {
+  id: ID! @id
+  title: String!
+  url: String!
+  description: String!
+  image: Image
+  seller: Seller
+}
+
+type Seller {
+  id: ID! @id
+  name: String!
+  managers: [User!]!
+  products: [Product!]!
+}
+
+type Product {
+  id: ID! @id
+  name: String!
+  ad: Ad
+  # owners: [User!]! # should be over Item.product Item.owner as @relationTable
+  sellers: [Seller!]!
+}
+
+type Image {
+  id: ID! @id
+  location: String!
 }
