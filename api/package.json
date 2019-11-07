@@ -7,7 +7,7 @@
         "start:watch": "run-p prisma:watch generate:types:watch api:watch",
         "api": "ts-node ./src/index.ts",
         "api:watch": "ts-node-dev ./src/index.ts",
-        "db": "cd orm && docker-compose up -d",
+        "db": "cd orm-uitproberen && docker-compose up -d",
         "prisma:deploy": "cd orm && prisma deploy",
         "prisma:watch": "sane \"run-s prisma:deploy\" --glob=\"orm/datamodel.prisma\"",
         "generate:types": "graphql-codegen --config codegen.yml",
